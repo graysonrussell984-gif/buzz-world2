@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background:
+      radial-gradient(circle at top, rgba(147, 51, 234, 0.22), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.18), transparent 35%),
+      #0b071a;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.glass-panel {
+  background: rgba(11, 7, 26, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 22px rgba(255, 255, 255, 0.08), 0 12px 28px rgba(0, 0, 0, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 30%, rgba(6, 182, 212, 0.05));
+  pointer-events: none;
+}
+
+.glass-panel-neon {
+  background: rgba(11, 7, 26, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(217, 70, 239, 0.45);
+  box-shadow: inset 0 0 20px rgba(217, 70, 239, 0.12), 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.text-gradient-neon {
+  background: linear-gradient(90deg, #06b6d4 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.6)) drop-shadow(0 0 20px rgba(6, 182, 212, 0.4));
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px #d946ef);
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 15px #d946ef);
+  }
+}
+
+.animate-mic-pulse {
+  animation: pulse-glow 1.2s infinite ease-in-out;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(217, 70, 239, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 70, 239, 0.7);
+}

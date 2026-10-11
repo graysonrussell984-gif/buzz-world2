@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "profile": {
+    "name": "Grayson Morris Russell",
+    "age": 32,
+    "location": "Dallas, Texas",
+    "degree": "B.S. in Business (Online)",
+    "longTermGoal": "Own independent businesses and create generational wealth for family",
+    "writingRules": [
+      "Short, plain sentences",
+      "Explain reasoning as you go",
+      "Use everyday phrasing: ins and outs, putting pen to paper, big push to keep going",
+      "10th-grade vocabulary level",
+      "Fix grammar and organize into clean paragraphs without erasing natural voice",
+      "Include real personal details without forcing them",
+      "Never sugarcoat, always tell the truth"
+    ]
+  },
+  "memories": [
+    {
+      "id": "mem-1791687550445-u2zq",
+      "category": "personal",
+      "title": "Buzz Insight",
+      "content": "[Voice Note]: Welcome to my personal voice vault. This is Grayson Russell. We are staying on top of schoolwork, organizing the day, and building businesses.",
+      "source": "user",
+      "createdAt": 1791687550445,
+      "updatedAt": 1791687550445
+    },
+    {
+      "id": "mem-1791687548364-m5a6",
+      "category": "personal",
+      "title": "Buzz Insight",
+      "content": "[Voice Note]: Welcome to my personal voice vault. This is Grayson Russell. We are staying on top of schoolwork, organizing the day, and building businesses.",
+      "source": "user",
+      "createdAt": 1791687548364,
+      "updatedAt": 1791687548364
+    },
+    {
+      "id": "mem-synth-1791680699022-2",
+      "category": "school",
+      "title": "Paper Writing",
+      "content": "Grayson is currently working on writing a paper.",
+      "source": "grown",
+      "createdAt": 1791680699022,
+      "updatedAt": 1791680699022
+    },
+    {
+      "id": "mem-synth-1791680699022-1",
+      "category": "business",
+      "title": "Entrepreneurial Endeavors",
+      "content": "Grayson is actively building businesses and focused on generating wealth.",
+      "source": "grown",
+      "createdAt": 1791680699022,
+      "updatedAt": 1791680699022
+    },
+    {
+      "id": "mem-synth-1791680699022-0",
+      "category": "personal",
+      "title": "Age and Location",
+      "content": "Grayson is a 32-year-old living in Dallas.",
+      "source": "grown",
+      "createdAt": 1791680699022,
+      "updatedAt": 1791680699022
+    },
+    {
+      "id": "mem-1791680170745-4u5e",
+      "category": "goal",
+      "title": "God Mode Chat Insight",
+      "content": "I am God Mode. How can I help you today?",
+      "source": "user",
+      "createdAt": 1791680170745,
+      "updatedAt": 1791680170745
+    },
+    {
+      "id": "mem-1791680170044-r5c3",
+      "category": "goal",
+      "title": "God Mode Chat Insight",
+      "content": "I am God Mode. How can I help you today?",
+      "source": "user",
+      "createdAt": 1791680170044,
+      "updatedAt": 1791680170044
+    },
+    {
+      "id": "mem-1791680169189-yj2s",
+      "category": "goal",
+      "title": "God Mode Chat Insight",
+      "content": "I am God Mode. How can I help you today?",
+      "source": "user",
+      "createdAt": 1791680169189,
+      "updatedAt": 1791680169189
+    },
+    {
+      "id": "mem-1791680168130-c18s",
+      "category": "goal",
+      "title": "God Mode Chat Insight",
+      "content": "I am God Mode. How can I help you today?",
+      "source": "user",
+      "createdAt": 1791680168130,
+      "updatedAt": 1791680168130
+    },
+    {
+      "id": "mem-1",
+      "category": "identity",
+      "title": "Grayson Profile & Background",
+      "content": "32-year-old from Dallas, Texas. Balancing online college courses with life grind. Family-oriented. Working every single day to break generational cycles.",
+      "source": "base",
+      "createdAt": 1790803240016,
+      "updatedAt": 1790803240016
+    },
+    {
+      "id": "mem-2",
+      "category": "school",
+      "title": "Writing Style & Grammar Rules",
+      "content": "Writing style: 10th-grade vocabulary, short plain sentences, explain reasoning as you go, keep natural phrases like \"putting pen to paper\" and \"ins and outs\". College encourages Grammarly for mechanics, but avoid AI magic-pen rewriting.",
+      "source": "base",
+      "createdAt": 1790889640016,
+      "updatedAt": 1790889640016
+    },
+    {
+      "id": "mem-3",
+      "category": "school",
+      "title": "Active Courses & Assignments",
+      "content": "Enrolled in Empowered Learner (Habits of Success, SMART goals, coping with overwhelming schedules) and Effective Communication Skills (communication maps, ad reflections, NASA article evaluation, instructor replies).",
+      "source": "base",
+      "createdAt": 1790976040016,
+      "updatedAt": 1790976040016
+    },
+    {
+      "id": "mem-4",
+      "category": "goal",
+      "title": "Business & Generational Wealth Mission",
+      "content": "Long-term goal is owning independent businesses. Creating wealth for future generations. Never allowing doubts to get in the way.",
+      "source": "base",
+      "createdAt": 1791062440016,
+      "updatedAt": 1791062440016
+    },
+    {
+      "id": "mem-5",
+      "category": "personal",
+      "title": "Personal Strength & Support Network",
+      "content": "Late-night FaceTime calls with cousin provide encouragement when stressed. Direct and honest about challenges, PO visits, Texas driving, and medication refills.",
+      "source": "base",
+      "createdAt": 1791148840016,
+      "updatedAt": 1791148840016
+    },
+    {
+      "id": "mem-6",
+      "category": "business",
+      "title": "AI Assistants Roles",
+      "content": "Buzz is primary personal assistant and memory bank. Einstein is strictly for schoolwork and essay polish. God Mode is unfiltered truth, strategy, and life reflection.",
+      "source": "base",
+      "createdAt": 1791235240016,
+      "updatedAt": 1791235240016
+    }
+  ],
+  "voiceConversations": [
+    {
+      "id": "voice-init-1",
+      "title": "Welcome Voice Note & Goals",
+      "transcript": "Welcome to my personal voice vault. This is Grayson Russell. We are staying on top of schoolwork, organizing the day, and building businesses.",
+      "summary": "Initial orientation on goals, daily planning, and schoolwork focus.",
+      "room": "general",
+      "duration": 18,
+      "keyTakeaways": [
+        "Focus on weekly college goals",
+        "Keep pushing toward business ownership"
+      ],
+      "timestamp": 1791580840016
+    }
+  ],
+  "chatHistory": {
+    "buzz": [
+      {
+        "id": "msg-init",
+        "sender": "ai",
+        "text": "I am Buzz. I remember everything. How can I help you today?",
+        "timestamp": 1791687703080
+      }
+    ],
+    "einstein": [
+      {
+        "id": "msg-init",
+        "sender": "ai",
+        "text": "I am Einstein. I am strictly for school. Let's fix that grammar.",
+        "timestamp": 1791687066178
+      },
+      {
+        "id": "msg-1791687079319",
+        "sender": "user",
+        "text": "writ 100 words on me",
+        "attachment": null,
+        "timestamp": 1791687079319
+      },
+      {
+        "id": "msg-1791687079671",
+        "sender": "ai",
+        "text": "I am thinking through this independently and keeping your memories updated. Regarding \"writ 100 words on me\": I'll break it down with complete honesty and real academic depth. Ask me anything and we'll get it right.",
+        "timestamp": 1791687079670
+      },
+      {
+        "id": "msg-1791687462466",
+        "sender": "user",
+        "text": "write 250 words on open speech",
+        "attachment": null,
+        "timestamp": 1791687462466
+      },
+      {
+        "id": "msg-1791687470198",
+        "sender": "ai",
+        "text": "Open speech means having the freedom to share your thoughts, ideas, and opinions without fear. It is one of the most important tools we have. When people can speak openly, they can talk about real problems, learn from each other, and question things that do not make sense. It gives regular people a voice instead of letting only powerful people control the narrative. \n\nIn everyday life and in business, open speech is just as critical. When you are building a business or working with a team, you need people to tell you the raw truth. You have to know the ins and outs of what is actually happening. When folks are scared to speak up, mistakes get hidden and growth stops. But when open dialogue is welcome, people can put their heads together to solve problems. It allows everyone to listen, learn different points of view, and make better decisions.\n\nAt the same time, open speech comes with responsibility. Having the right to speak your mind does not mean talking just to tear others down. It means using your voice to stand up for what is right and build trust. Whether you are putting pen to paper for a college paper or speaking up in a tough meeting, honest communication takes courage. Being clear and direct is how you earn respect, break down barriers, and keep moving forward toward your goals.",
+        "timestamp": 1791687470197
+      }
+    ],
+    "godmode": [
+      {
+        "id": "msg-init",
+        "sender": "ai",
+        "text": "I am God Mode. How can I help you today?",
+        "timestamp": 1791667397598
+      },
+      {
+        "id": "msg-1791680193518",
+        "sender": "user",
+        "text": "I don't feel let live is real",
+        "attachment": null,
+        "timestamp": 1791680193518
+      },
+      {
+        "id": "msg-1791680202703",
+        "sender": "ai",
+        "text": "I see exactly where you're at. No sugarcoating: we're focused on the bag, building generational wealth, and taking care of business. Let's execute.",
+        "timestamp": 1791680202702
+      }
+    ]
+  }
+}
