@@ -10,8 +10,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-lg bg-[#0b071a]/95 border border-fuchsia-500/50 rounded-3xl p-6 shadow-[0_0_40px_rgba(217,70,239,0.3)] text-white overflow-hidden max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-lg bg-[#0b071a]/95 border border-fuchsia-500/50 rounded-3xl p-4 sm:p-6 shadow-[0_0_40px_rgba(217,70,239,0.3)] text-white overflow-hidden max-h-[90dvh] flex flex-col">
         {/* Background glow */}
         <div className="absolute -top-20 -right-20 w-48 h-48 bg-fuchsia-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />

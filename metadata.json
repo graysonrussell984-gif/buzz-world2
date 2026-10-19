@@ -1,6 +1,6 @@
 {
   "name": "Einstein's Lab",
   "description": "Personal AI dashboard featuring Einstein for schoolwork, Buzz for memory & daily assistance, God Mode for unfiltered truth, plus navigation, calendar, projects, gallery, and library.",
-  "requestFramePermissions": [],
+  "requestFramePermissions": ["microphone", "camera", "clipboard-write", "clipboard-read"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

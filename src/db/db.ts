@@ -18,10 +18,21 @@ export interface MemoryItem {
   updatedAt: number;
 }
 
+export interface VoiceDialogueTurn {
+  id: string;
+  sender: 'user' | 'ai';
+  text: string;
+  timestamp: number;
+  audioData?: string;
+  room?: 'buzz' | 'einstein' | 'godmode' | 'general';
+}
+
 export interface VoiceConversation {
   id: string;
   title: string;
   transcript: string;
+  aiResponse?: string;
+  dialogue?: VoiceDialogueTurn[];
   summary: string;
   room: 'buzz' | 'einstein' | 'godmode' | 'general';
   duration: number; // in seconds
@@ -42,6 +53,41 @@ export interface StoredChatRoom {
   updatedAt: number;
 }
 
+export interface UserNeedItem {
+  id: string;
+  need: string;
+  category: 'school' | 'business' | 'personal' | 'growth';
+  status: 'active' | 'in_progress' | 'resolved';
+  timestamp: number;
+  room?: string;
+}
+
+export interface UserStatementItem {
+  id: string;
+  quote: string;
+  context?: string;
+  timestamp: number;
+  room?: string;
+}
+
+export interface UserToneProfile {
+  mood: string;
+  energy: 'high' | 'focused' | 'calm' | 'reflective' | 'intense';
+  toneDirective: string;
+  lastUpdated: number;
+  summary: string;
+}
+
+export interface IntelligenceState {
+  level: number;
+  levelTitle: string;
+  xp: number;
+  totalInsightsLearned: number;
+  currentTone: UserToneProfile;
+  recentNeeds: UserNeedItem[];
+  coreStatements: UserStatementItem[];
+}
+
 export interface DatabaseSchema {
   version: number;
   profile: {
@@ -53,12 +99,16 @@ export interface DatabaseSchema {
     writingRules: string[];
   };
   memories: MemoryItem[];
+  intelligenceState?: IntelligenceState;
   voiceConversations: VoiceConversation[];
   chatHistory: {
     buzz: any[];
     einstein: any[];
     godmode: any[];
   };
+  tasks?: { [dateKey: string]: string[] };
+  projects?: Array<{ id: string; text: string; createdAt: number }>;
+  gallery?: string[];
 }
 
 const INITIAL_DATABASE: DatabaseSchema = {
@@ -159,6 +209,72 @@ const INITIAL_DATABASE: DatabaseSchema = {
     einstein: [],
     godmode: [],
   },
+  tasks: {},
+  projects: [
+    { id: 'p1', text: 'Business Plan Draft - Q4 2026', createdAt: Date.now() },
+    { id: 'p2', text: 'Empowered Learner Final Assignment', createdAt: Date.now() },
+  ],
+  gallery: [],
+};
+
+export const DEFAULT_INTELLIGENCE_STATE: IntelligenceState = {
+  level: 2,
+  levelTitle: 'Strategic Synthesizer',
+  xp: 180,
+  totalInsightsLearned: 6,
+  currentTone: {
+    mood: 'Determined & Focused',
+    energy: 'focused',
+    toneDirective: "Match Grayson's drive with direct truth, zero excuses, and concrete steps. Keep prose punchy and practical.",
+    lastUpdated: Date.now(),
+    summary: 'Grayson is locked in on his degree, building businesses, and breaking generational cycles.',
+  },
+  recentNeeds: [
+    {
+      id: 'need-1',
+      need: 'Master Empowered Learner habits & communication course assignments with high marks',
+      category: 'school',
+      status: 'active',
+      timestamp: Date.now() - 86400000 * 2,
+      room: 'einstein',
+    },
+    {
+      id: 'need-2',
+      need: 'Structure Texas LLC and build independent business systems',
+      category: 'business',
+      status: 'active',
+      timestamp: Date.now() - 86400000 * 3,
+      room: 'godmode',
+    },
+    {
+      id: 'need-3',
+      need: 'Action-oriented daily schedule without feeling overwhelmed',
+      category: 'personal',
+      status: 'active',
+      timestamp: Date.now() - 86400000 * 1,
+      room: 'buzz',
+    },
+  ],
+  coreStatements: [
+    {
+      id: 'stmt-1',
+      quote: 'Putting pen to paper. Never allowing doubts to get in the way.',
+      context: 'Core work ethic and life philosophy',
+      timestamp: Date.now() - 86400000 * 4,
+    },
+    {
+      id: 'stmt-2',
+      quote: 'Balancing online college courses with the life grind every single day.',
+      context: 'Daily routine and determination',
+      timestamp: Date.now() - 86400000 * 3,
+    },
+    {
+      id: 'stmt-3',
+      quote: 'We are staying on top of schoolwork, organizing the day, and building businesses.',
+      context: 'Opening declaration in Voice Vault',
+      timestamp: Date.now() - 86400000 * 1,
+    },
+  ],
 };
 
 // Ensure data folder and file exists
@@ -167,7 +283,7 @@ function ensureDbExists(): void {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
   if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify(INITIAL_DATABASE, null, 2), 'utf-8');
+    fs.writeFileSync(DB_FILE, JSON.stringify({ ...INITIAL_DATABASE, intelligenceState: DEFAULT_INTELLIGENCE_STATE }, null, 2), 'utf-8');
   }
 }
 
@@ -182,10 +298,39 @@ export function readDatabase(): DatabaseSchema {
         if (!m.source || m.source === 'system') m.source = 'base';
       });
     }
+    if (!parsed.intelligenceState) {
+      parsed.intelligenceState = { ...DEFAULT_INTELLIGENCE_STATE };
+    } else {
+      if (!parsed.intelligenceState.currentTone) {
+        parsed.intelligenceState.currentTone = { ...DEFAULT_INTELLIGENCE_STATE.currentTone };
+      }
+      if (!Array.isArray(parsed.intelligenceState.recentNeeds)) {
+        parsed.intelligenceState.recentNeeds = [...DEFAULT_INTELLIGENCE_STATE.recentNeeds];
+      }
+      if (!Array.isArray(parsed.intelligenceState.coreStatements)) {
+        parsed.intelligenceState.coreStatements = [...DEFAULT_INTELLIGENCE_STATE.coreStatements];
+      }
+      if (!parsed.intelligenceState.level) {
+        parsed.intelligenceState.level = 2;
+        parsed.intelligenceState.levelTitle = 'Strategic Synthesizer';
+      }
+    }
+    if (!parsed.tasks || typeof parsed.tasks !== 'object') {
+      parsed.tasks = {};
+    }
+    if (!Array.isArray(parsed.projects)) {
+      parsed.projects = [
+        { id: 'p1', text: 'Business Plan Draft - Q4 2026', createdAt: Date.now() },
+        { id: 'p2', text: 'Empowered Learner Final Assignment', createdAt: Date.now() },
+      ];
+    }
+    if (!Array.isArray(parsed.gallery)) {
+      parsed.gallery = [];
+    }
     return parsed;
   } catch (err) {
     console.error('Error reading database file, returning default:', err);
-    return INITIAL_DATABASE;
+    return { ...INITIAL_DATABASE, intelligenceState: DEFAULT_INTELLIGENCE_STATE };
   }
 }
 
@@ -197,3 +342,4 @@ export function writeDatabase(data: DatabaseSchema): void {
     console.error('Error saving database:', err);
   }
 }
+

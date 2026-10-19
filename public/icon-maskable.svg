@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgMaskGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1d113a" />
+      <stop offset="60%" stop-color="#0e0722" />
+      <stop offset="100%" stop-color="#070312" />
+    </radialGradient>
+    <linearGradient id="orbitCyanM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="orbitFuchsiaM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d946ef" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="coreGoldM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed background for maskable squircle/circle clipping -->
+  <rect width="512" height="512" fill="url(#bgMaskGrad)" />
+
+  <!-- Content scaled inside 80% safe zone (center 256, 256, scaled by 0.78) -->
+  <g transform="translate(56.32, 56.32) scale(0.78)">
+    <circle cx="256" cy="256" r="140" fill="#7928ca" opacity="0.25" />
+    <circle cx="256" cy="256" r="90" fill="#06b6d4" opacity="0.2" />
+
+    <!-- Orbit 1: Angled -35deg -->
+    <ellipse cx="256" cy="256" rx="170" ry="60" fill="none" stroke="url(#orbitCyanM)" stroke-width="10" transform="rotate(-35 256 256)" opacity="0.95" />
+    <circle cx="115" cy="155" r="10" fill="#22d3ee" />
+    <circle cx="397" cy="357" r="10" fill="#22d3ee" />
+
+    <!-- Orbit 2: Angled +35deg -->
+    <ellipse cx="256" cy="256" rx="170" ry="60" fill="none" stroke="url(#orbitFuchsiaM)" stroke-width="10" transform="rotate(35 256 256)" opacity="0.95" />
+    <circle cx="397" cy="155" r="10" fill="#f472b6" />
+    <circle cx="115" cy="357" r="10" fill="#f472b6" />
+
+    <!-- Central Core -->
+    <circle cx="256" cy="256" r="48" fill="url(#coreGoldM)" />
+    <circle cx="256" cy="256" r="40" fill="#fffbeb" opacity="0.95" />
+
+    <!-- Stylized Lab 'E' -->
+    <path d="M236 230 L276 230 M236 230 L236 282 L276 282 M236 256 L268 256" stroke="#92400e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Sparkle Accent Stars -->
+    <polygon points="256,192 260,206 274,210 260,214 256,228 252,214 238,210 252,206" fill="#fde68a" />
+    <polygon points="200,285 203,295 213,298 203,301 200,311 197,301 187,298 197,295" fill="#38bdf8" />
+    <polygon points="312,285 315,295 325,298 315,301 312,311 309,301 299,298 309,295" fill="#f472b6" />
+  </g>
+</svg>

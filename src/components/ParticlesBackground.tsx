@@ -25,7 +25,7 @@ export const ParticlesBackground: React.FC<ParticlesProps> = ({ count = 45 }) =>
     };
     window.addEventListener('resize', handleResize);
 
-    const colors = ['#d946ef', '#06b6d4', '#a855f7', '#ffffff'];
+    const colors = ['#d946ef', '#06b6d4', '#a855f7'];
     const particles = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,

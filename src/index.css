@@ -16,8 +16,9 @@
       radial-gradient(circle at top, rgba(147, 51, 234, 0.22), transparent 28%),
       radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.18), transparent 35%),
       #0b071a;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
 
   button,

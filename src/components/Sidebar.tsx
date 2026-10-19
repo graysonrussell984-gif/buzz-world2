@@ -12,7 +12,12 @@ import {
   X,
   Brain,
   Mic,
+  Radio,
+  Clapperboard,
+  Landmark,
 } from 'lucide-react';
+import { useCloudSync } from '../hooks/useCloudSync';
+import { PWAInstallButton } from './PWAInstallBanner';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -20,6 +25,8 @@ interface SidebarProps {
   onNavigate: (room: RoomType) => void;
   onOpenProfile: () => void;
   onOpenSettings: () => void;
+  onOpenVideoStudio?: () => void;
+  onOpenTexasBusiness?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -28,7 +35,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onNavigate,
   onOpenProfile,
   onOpenSettings,
+  onOpenVideoStudio,
+  onOpenTexasBusiness,
 }) => {
+  const { syncStatus, connectedDevices } = useCloudSync();
   return (
     <>
       {/* Overlay */}
@@ -41,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Sidebar Panel */}
       <aside
-        className={`fixed top-0 left-0 w-72 h-full z-50 flex flex-col p-6 transition-transform duration-300 ease-in-out bg-cover bg-center shadow-2xl shadow-black/80 ${
+        className={`fixed top-0 left-0 w-72 max-w-[85vw] h-[100dvh] z-50 flex flex-col p-5 sm:p-6 transition-transform duration-300 ease-in-out bg-cover bg-center shadow-2xl shadow-black/80 pb-[max(1rem,env(safe-area-inset-bottom))] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
         style={{
@@ -85,6 +95,32 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <span>Navigation Hub</span>
           </button>
 
+          {onOpenVideoStudio && (
+            <button
+              onClick={() => {
+                onOpenVideoStudio();
+                onClose();
+              }}
+              className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-orbitron text-xs text-left bg-gradient-to-r from-amber-500/20 to-fuchsia-500/20 border border-amber-400/50 hover:border-amber-400 hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all cursor-pointer text-amber-200"
+            >
+              <Clapperboard size={16} className="text-amber-400" />
+              <span>Video Studio (5-Min & 2-Min)</span>
+            </button>
+          )}
+
+          {onOpenTexasBusiness && (
+            <button
+              onClick={() => {
+                onOpenTexasBusiness();
+                onClose();
+              }}
+              className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-orbitron text-xs text-left bg-amber-950/30 border border-amber-500/30 hover:bg-amber-500/20 hover:border-amber-400 hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all cursor-pointer text-amber-200"
+            >
+              <Landmark size={16} className="text-amber-400" />
+              <span>Texas Business Playbook</span>
+            </button>
+          )}
+
           {/* Database & Memory section */}
           <div className="pt-2 text-[10px] font-orbitron text-cyan-400 uppercase tracking-widest px-2">
             Database & Audio Vault
@@ -109,7 +145,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-orbitron text-xs text-left bg-fuchsia-950/40 border border-fuchsia-500/40 hover:bg-fuchsia-500/20 hover:border-fuchsia-300 hover:shadow-[0_0_15px_rgba(217,70,239,0.5)] transition-all cursor-pointer text-white"
           >
             <Mic size={16} className="text-fuchsia-400" />
-            <span>Voice Conversations</span>
+            <span>Live Voice Studio</span>
           </button>
 
           <button
@@ -160,6 +196,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <span>God Mode</span>
           </button>
 
+          {/* Download App to Phone (PWA Install) */}
+          <div className="pt-2">
+            <PWAInstallButton variant="sidebar" />
+          </div>
+
           <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
             <button
               onClick={() => {
@@ -185,7 +226,42 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </nav>
 
-        <div className="pt-3 text-center text-[10px] text-gray-400 font-mono">
+        {/* Live Cross-Device Sync Status Indicator */}
+        <div className="pt-2 px-1">
+          <div
+            className={`p-2.5 rounded-xl border flex items-center justify-between text-[11px] font-orbitron transition-all ${
+              syncStatus === 'connected'
+                ? 'bg-emerald-950/30 border-emerald-500/40 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+                : syncStatus === 'connecting'
+                ? 'bg-amber-950/30 border-amber-500/40 text-amber-300'
+                : 'bg-red-950/30 border-red-500/40 text-red-300'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  syncStatus === 'connected'
+                    ? 'bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.9)]'
+                    : syncStatus === 'connecting'
+                    ? 'bg-amber-400 animate-ping'
+                    : 'bg-red-400'
+                }`}
+              />
+              <span>
+                {syncStatus === 'connected'
+                  ? 'Cloud Linked'
+                  : syncStatus === 'connecting'
+                  ? 'Connecting...'
+                  : 'Reconnecting'}
+              </span>
+            </div>
+            <span className="text-[10px] text-gray-400 font-mono tracking-tight">
+              {connectedDevices > 1 ? `${connectedDevices} devices` : 'Phone & Laptop'}
+            </span>
+          </div>
+        </div>
+
+        <div className="pt-2 text-center text-[10px] text-gray-400 font-mono">
           Grayson Morris Russell &copy; 2026
         </div>
       </aside>
